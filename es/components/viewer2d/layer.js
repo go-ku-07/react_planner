@@ -6,7 +6,8 @@ export default function Layer(_ref) {
   var layer = _ref.layer,
       scene = _ref.scene,
       catalog = _ref.catalog,
-      activeItems = _ref.activeItems;
+      activeItems = _ref.activeItems,
+      availableItems = _ref.availableItems;
   var unit = scene.unit,
       groups = scene.groups;
   var lines = layer.lines,
@@ -46,7 +47,8 @@ export default function Layer(_ref) {
         item: item,
         scene: scene,
         catalog: catalog,
-        activeItems: activeItems
+        activeItems: activeItems,
+        availableItems: availableItems
       });
     }),
     vertices.valueSeq().filter(function (v) {

@@ -26,7 +26,17 @@ export default function Item(_ref) {
       item = _ref.item,
       scene = _ref.scene,
       catalog = _ref.catalog,
-      activeItems = _ref.activeItems;
+      activeItems = _ref.activeItems,
+      availableItems = _ref.availableItems;
+
+
+  var isActive = activeItems.includes(item.id);
+  var isAvailable = !isActive ? true : availableItems.includes(item.id);
+
+  // console.log(activeItems);
+  // console.log(availableItems);
+  // console.log('isAvailable',availableItems.includes(item.id))
+
   var x = item.x,
       y = item.y,
       rotation = item.rotation;
@@ -34,9 +44,7 @@ export default function Item(_ref) {
 
   var circleRef = React.createRef();
 
-  var renderedItem = catalog.getElement(item.type).render2D(item, layer, scene);
-
-  console.log(activeItems);
+  var renderedItem = catalog.getElement(item.type).render2D(item, layer, scene, isAvailable);
 
   // const activeItem = ReactPlannerService.getInstance().activeItem;
 

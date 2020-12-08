@@ -13,7 +13,12 @@ export default function Content(_ref) {
       height = _ref.height,
       state = _ref.state,
       customContents = _ref.customContents,
-      activeItems = _ref.activeItems;
+      activeItems = _ref.activeItems,
+      availableItems = _ref.availableItems;
+
+
+  var actives = activeItems ? activeItems : [];
+  var available = availableItems ? availableItems : [];
 
   var mode = state.get("mode");
 
@@ -44,7 +49,8 @@ export default function Content(_ref) {
         state: state,
         width: width,
         height: height,
-        activeItems: activeItems
+        activeItems: actives,
+        availableItems: available
       });
 
     case constants.MODE_CONFIGURING_PROJECT:

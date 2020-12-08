@@ -166,7 +166,8 @@ ReactPlanner.propTypes = {
   onAction: PropTypes.func,
   onRemoveItem: PropTypes.func,
   initialMap: PropTypes.string,
-  activeItems: PropTypes.array
+  activeItems: PropTypes.array,
+  availableItems: PropTypes.array
   // itemMaker: PropTypes.instanceOf(Element),
 };
 
