@@ -15,7 +15,7 @@ export default function State(_ref) {
   var state = _ref.state,
       catalog = _ref.catalog,
       activeItems = _ref.activeItems,
-      availableItems = _ref.availableItems;
+      unAvailableItems = _ref.unAvailableItems;
   var activeSnapElement = state.activeSnapElement,
       snapElements = state.snapElements,
       scene = state.scene;
@@ -43,7 +43,12 @@ export default function State(_ref) {
         transform: "translate(0, " + scene.height + ") scale(1, -1)",
         id: "svg-drawing-paper"
       },
-      React.createElement(Scene, { scene: scene, catalog: catalog, activeItems: activeItems, availableItems: availableItems }),
+      React.createElement(Scene, {
+        scene: scene,
+        catalog: catalog,
+        activeItems: activeItems,
+        unAvailableItems: unAvailableItems
+      }),
       scene.getIn(["guides", "horizontal"]).entrySeq().map(function (_ref2) {
         var _ref3 = _slicedToArray(_ref2, 2),
             hgKey = _ref3[0],

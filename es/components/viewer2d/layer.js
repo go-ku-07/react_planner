@@ -7,7 +7,7 @@ export default function Layer(_ref) {
       scene = _ref.scene,
       catalog = _ref.catalog,
       activeItems = _ref.activeItems,
-      availableItems = _ref.availableItems;
+      unAvailableItems = _ref.unAvailableItems;
   var unit = scene.unit,
       groups = scene.groups;
   var lines = layer.lines,
@@ -48,7 +48,7 @@ export default function Layer(_ref) {
         scene: scene,
         catalog: catalog,
         activeItems: activeItems,
-        availableItems: availableItems
+        unAvailableItems: unAvailableItems
       });
     }),
     vertices.valueSeq().filter(function (v) {

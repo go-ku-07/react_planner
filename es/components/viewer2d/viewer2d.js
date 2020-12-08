@@ -96,7 +96,8 @@ export default function Viewer2D(_ref, _ref2) {
       width = _ref.width,
       height = _ref.height,
       activeItems = _ref.activeItems,
-      availableItems = _ref.availableItems;
+      unAvailableItems = _ref.unAvailableItems,
+      isEdit = _ref.isEdit;
   var viewer2DActions = _ref2.viewer2DActions,
       linesActions = _ref2.linesActions,
       holesActions = _ref2.holesActions,
@@ -316,7 +317,6 @@ export default function Viewer2D(_ref, _ref2) {
 
   // viewer2DActions.selectToolZoomIn();
 
-
   var _state$get$toJS = state.get("viewer2D").toJS(),
       e = _state$get$toJS.e,
       f = _state$get$toJS.f,
@@ -347,13 +347,12 @@ export default function Viewer2D(_ref, _ref2) {
         onChangeValue: onChangeValue,
         tool: mode2Tool(mode),
         onChangeTool: onChangeTool,
-        detectAutoPan: mode2DetectAutopan(mode)
-        // onMouseDown={onMouseDown}
-        // onMouseMove={onMouseMove}
-        , onMouseUp: onMouseUp,
+        detectAutoPan: mode2DetectAutopan(mode),
+        onMouseDown: isEdit ? onMouseDown : null,
+        onMouseMove: isEdit ? onMouseMove : null,
+        onMouseUp: onMouseUp,
         miniaturePosition: "none",
         toolbarPosition: "none"
-
       },
       React.createElement(
         "svg",
@@ -380,7 +379,12 @@ export default function Viewer2D(_ref, _ref2) {
         React.createElement(
           "g",
           { style: Object.assign(mode2Cursor(mode), mode2PointerEvents(mode)) },
-          React.createElement(State, { state: state, catalog: catalog, activeItems: activeItems, availableItems: availableItems })
+          React.createElement(State, {
+            state: state,
+            catalog: catalog,
+            activeItems: activeItems,
+            unAvailableItems: unAvailableItems
+          })
         )
       )
     )

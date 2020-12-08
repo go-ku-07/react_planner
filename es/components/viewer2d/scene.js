@@ -26,7 +26,7 @@ var Scene = function (_Component) {
     value: function shouldComponentUpdate(nextProps, nextState) {
       // return this.props.scene.hashCode() !== nextProps.scene.hashCode();
       //Autonomous
-      return this.props.scene.hashCode() !== nextProps.scene.hashCode() || this.props.activeItems != nextProps.activeItems || this.props.availableItems != nextProps.availableItems;
+      return this.props.scene.hashCode() !== nextProps.scene.hashCode() || this.props.activeItems != nextProps.activeItems || this.props.unAvailableItems != nextProps.unAvailableItems;
     }
   }, {
     key: "render",
@@ -35,7 +35,7 @@ var Scene = function (_Component) {
           scene = _props.scene,
           catalog = _props.catalog,
           activeItems = _props.activeItems,
-          availableItems = _props.availableItems;
+          unAvailableItems = _props.unAvailableItems;
       var height = scene.height,
           layers = scene.layers;
 
@@ -63,7 +63,7 @@ var Scene = function (_Component) {
               scene: scene,
               catalog: catalog,
               activeItems: activeItems,
-              availableItems: availableItems
+              unAvailableItems: unAvailableItems
             });
           })
         ),
@@ -73,7 +73,7 @@ var Scene = function (_Component) {
           scene: scene,
           catalog: catalog,
           activeItems: activeItems,
-          availableItems: availableItems
+          unAvailableItems: unAvailableItems
         })
       );
     }

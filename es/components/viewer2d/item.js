@@ -27,11 +27,10 @@ export default function Item(_ref) {
       scene = _ref.scene,
       catalog = _ref.catalog,
       activeItems = _ref.activeItems,
-      availableItems = _ref.availableItems;
-
+      unAvailableItems = _ref.unAvailableItems;
 
   var isActive = activeItems.includes(item.id);
-  var isAvailable = !isActive ? true : availableItems.includes(item.id);
+  var isAvailable = !isActive ? true : !unAvailableItems.includes(item.id);
 
   // console.log(activeItems);
   // console.log(availableItems);

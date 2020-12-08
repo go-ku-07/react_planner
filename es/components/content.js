@@ -14,11 +14,12 @@ export default function Content(_ref) {
       state = _ref.state,
       customContents = _ref.customContents,
       activeItems = _ref.activeItems,
-      availableItems = _ref.availableItems;
-
+      _ref$unAvailableItems = _ref.unAvailableItems,
+      unAvailableItems = _ref$unAvailableItems === undefined ? [] : _ref$unAvailableItems,
+      _ref$isEdit = _ref.isEdit,
+      isEdit = _ref$isEdit === undefined ? true : _ref$isEdit;
 
   var actives = activeItems ? activeItems : [];
-  var available = availableItems ? availableItems : [];
 
   var mode = state.get("mode");
 
@@ -50,7 +51,8 @@ export default function Content(_ref) {
         width: width,
         height: height,
         activeItems: actives,
-        availableItems: available
+        unAvailableItems: unAvailableItems,
+        isEdit: isEdit
       });
 
     case constants.MODE_CONFIGURING_PROJECT:

@@ -21,20 +21,28 @@ const STYLE_CIRCLE2 = {
   cursor: "ew-resize",
 };
 
-export default function Item({ layer, item, scene, catalog, activeItems, availableItems }) {
-
-  const isActive = activeItems.includes(item.id)
-  const isAvailable = !isActive ? true :  availableItems.includes(item.id)
+export default function Item({
+  layer,
+  item,
+  scene,
+  catalog,
+  activeItems,
+  unAvailableItems,
+}) {
+  const isActive = activeItems.includes(item.id);
+  const isAvailable = !isActive ? true : !unAvailableItems.includes(item.id);
 
   // console.log(activeItems);
   // console.log(availableItems);
   // console.log('isAvailable',availableItems.includes(item.id))
-  
+
   let { x, y, rotation } = item;
 
   const circleRef = React.createRef();
 
-  let renderedItem = catalog.getElement(item.type).render2D(item, layer, scene, isAvailable);
+  let renderedItem = catalog
+    .getElement(item.type)
+    .render2D(item, layer, scene, isAvailable);
 
   // const activeItem = ReactPlannerService.getInstance().activeItem;
 
