@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Line, Area, Vertex, Item, Group } from "./export";
 
-export default function Layer({ layer, scene, catalog, activeItems }) {
+export default function Layer({ layer, scene, catalog, activeItems, availableItems}) {
   let { unit, groups } = scene;
   let { lines, areas, vertices, holes, id: layerID, items, opacity } = layer;
 
@@ -34,6 +34,7 @@ export default function Layer({ layer, scene, catalog, activeItems }) {
           scene={scene}
           catalog={catalog}
           activeItems={activeItems}
+          availableItems={availableItems}
         />
       ))}
       {vertices

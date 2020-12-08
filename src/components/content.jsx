@@ -14,7 +14,12 @@ export default function Content({
   state,
   customContents,
   activeItems,
+  availableItems
 }) {
+
+  const actives = activeItems ? activeItems : []
+  const available = availableItems?availableItems : []
+
   let mode = state.get("mode");
 
   switch (mode) {
@@ -47,7 +52,8 @@ export default function Content({
           state={state}
           width={width}
           height={height}
-          activeItems={activeItems}
+          activeItems={actives}
+          availableItems={available}
         />
       );
 

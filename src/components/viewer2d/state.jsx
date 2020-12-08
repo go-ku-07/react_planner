@@ -9,7 +9,7 @@ const guideStyle = {
   strokewidth: "2.5px",
 };
 
-export default function State({ state, catalog, activeItems }) {
+export default function State({ state, catalog, activeItems, availableItems }) {
   let { activeSnapElement, snapElements, scene } = state;
   let { width, height } = scene;
 
@@ -32,7 +32,7 @@ export default function State({ state, catalog, activeItems }) {
         transform={`translate(0, ${scene.height}) scale(1, -1)`}
         id="svg-drawing-paper"
       >
-        <Scene scene={scene} catalog={catalog} activeItems={activeItems} />
+        <Scene scene={scene} catalog={catalog} activeItems={activeItems} availableItems={availableItems}/>
         {scene
           .getIn(["guides", "horizontal"])
           .entrySeq()

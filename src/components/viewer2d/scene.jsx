@@ -8,12 +8,12 @@ export default class Scene extends Component {
     //Autonomous
     return (
       this.props.scene.hashCode() !== nextProps.scene.hashCode() ||
-      this.props.activeItems != nextProps.activeItems
+      this.props.activeItems != nextProps.activeItems || this.props.availableItems != nextProps.availableItems
     );
   }
 
   render() {
-    let { scene, catalog, activeItems } = this.props;
+    let { scene, catalog, activeItems, availableItems } = this.props;
     let { height, layers } = scene;
     let selectedLayer = layers.get(scene.selectedLayer);
     return (
@@ -34,6 +34,7 @@ export default class Scene extends Component {
                 scene={scene}
                 catalog={catalog}
                 activeItems={activeItems}
+                availableItems={availableItems}
               />
             ))}
         </g>
@@ -44,6 +45,7 @@ export default class Scene extends Component {
           scene={scene}
           catalog={catalog}
           activeItems={activeItems}
+          availableItems={availableItems}
         />
       </g>
     );

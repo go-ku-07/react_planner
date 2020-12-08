@@ -107,7 +107,7 @@ function extractElementData(node) {
 }
 
 export default function Viewer2D(
-  { state, width, height, activeItems },
+  { state, width, height, activeItems, availableItems },
   {
     viewer2DActions,
     linesActions,
@@ -121,7 +121,7 @@ export default function Viewer2D(
 ) {
   let { viewer2D, mode, scene } = state;
   let layerID = scene.selectedLayer;
-
+ 
   let mapCursorPosition = ({ x, y }) => {
     return { x, y: -y + scene.height };
   };
@@ -351,6 +351,9 @@ export default function Viewer2D(
     }
   };
 
+  // viewer2DActions.selectToolZoomIn();
+
+
   let { e, f, SVGWidth, SVGHeight } = state.get("viewer2D").toJS();
 
   let rulerSize = 15; //px
@@ -375,11 +378,12 @@ export default function Viewer2D(
         tool={mode2Tool(mode)}
         onChangeTool={onChangeTool}
         detectAutoPan={mode2DetectAutopan(mode)}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
+        // onMouseDown={onMouseDown}
+        // onMouseMove={onMouseMove}
         onMouseUp={onMouseUp}
         miniaturePosition="none"
         toolbarPosition="none"
+        
       >
         <svg width={scene.width} height={scene.height}>
           <defs>
@@ -398,7 +402,7 @@ export default function Viewer2D(
             </pattern>
           </defs>
           <g style={Object.assign(mode2Cursor(mode), mode2PointerEvents(mode))}>
-            <State state={state} catalog={catalog} activeItems={activeItems} />
+            <State state={state} catalog={catalog} activeItems={activeItems} availableItems={availableItems}/>
           </g>
         </svg>
       </ReactSVGPanZoom>
