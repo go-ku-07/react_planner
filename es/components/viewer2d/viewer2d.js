@@ -239,7 +239,12 @@ export default function Viewer2D(_ref, _ref2) {
             break;
 
           case "items":
-            ReactPlannerService.getInstance().onAction(Action.SELECT, ItemTypes.ITEM, elementData.id, { x: x, y: y });
+            // ReactPlannerService.getInstance().onAction(
+            //   Action.SELECT,
+            //   ItemTypes.ITEM,
+            //   elementData.id,
+            //   { x, y }
+            // );
             itemsActions.selectItem(elementData.layer, elementData.id);
             break;
 

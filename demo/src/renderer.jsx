@@ -100,8 +100,8 @@ const App = () => {
     <Provider context={MyContext} store={store}>
       <button
         onClick={() => {
-          // reactPlannerRef.current.openCatalog();
-          setPosition(["dbki6Tg_1"]);
+          reactPlannerRef.current.openCatalog();
+          // setPosition(["dbki6Tg_1"]);
         }}
       >
         OPEN cATALOG
@@ -131,7 +131,7 @@ const App = () => {
             }
             activeItems={["cxcKVarIA"]}
             unAvailableItems={["cxcKVarIA"]}
-            isEdit={false}
+            isEdit={true}
           />
         )}
       </ContainerDimensions>

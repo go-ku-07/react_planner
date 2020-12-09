@@ -37,13 +37,13 @@ class Item {
     state = Layer.select(state, layerID).updatedState;
     state = Layer.selectElement(state, layerID, "items", itemID).updatedState;
 
-    // Autonomous
+    // Autonomous;
     // if (!isCreatedSelect) {
-    //   ReactPlannerService.getInstance().onAction(
-    //     Action.SELECT,
-    //     ItemTypes.ITEM,
-    //     itemID
-    //   );
+    ReactPlannerService.getInstance().onAction(
+      Action.SELECT,
+      ItemTypes.ITEM,
+      itemID
+    );
     // }
 
     return { updatedState: state };
