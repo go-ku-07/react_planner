@@ -40,7 +40,7 @@ var wrapperStyle = {
   flexFlow: "row nowrap"
 };
 
-import { itemsActions } from "./actions/export";
+import { itemsActions, linesActions, holesActions } from "./actions/export";
 
 var ReactPlanner = function (_Component) {
   _inherits(ReactPlanner, _Component);
