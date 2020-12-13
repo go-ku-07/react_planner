@@ -94,7 +94,9 @@ const App = () => {
     }, 0);
   }, []);
 
-  console.log("store", store.getState());
+  // console.log("store", store.getState());
+
+  console.log("MyCatalog", MyCatalog.getCategory("root"));
 
   return isTimeOut && store ? (
     <Provider context={MyContext} store={store}>
@@ -106,6 +108,17 @@ const App = () => {
       >
         OPEN cATALOG
       </button>
+      {MyCatalog.getCategory("root").elements.map((element) => {
+        return (
+          <button
+            onClick={() => {
+              reactPlannerRef.current.selectCatalogItem(element);
+            }}
+          >
+            {element.name}
+          </button>
+        );
+      })}
       <ContainerDimensions>
         {({ width, height }) => (
           <ReactPlanner

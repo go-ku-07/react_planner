@@ -24,6 +24,7 @@ import { VERSION } from "./version";
 import "./styles/export";
 import ReactPlannerService from "./ReactPlannerService";
 import { loadProject } from "./actions/project-actions";
+import CatalogList from "./components/catalog-view/catalog-list";
 
 var Toolbar = ToolbarComponents.Toolbar;
 var Sidebar = SidebarComponents.Sidebar;
@@ -38,6 +39,8 @@ var wrapperStyle = {
   display: "flex",
   flexFlow: "row nowrap"
 };
+
+import { itemsActions } from "./actions/export";
 
 var ReactPlanner = function (_Component) {
   _inherits(ReactPlanner, _Component);
@@ -107,7 +110,29 @@ var ReactPlanner = function (_Component) {
     key: "openCatalog",
     value: function openCatalog() {
       this.props.projectActions.openCatalog();
-      // console.log("aa");
+      // this.props.store.dispatch(selectToolDrawingItem("bench"));
+    }
+  }, {
+    key: "unSelectAll",
+    value: function unSelectAll() {
+      this.props.projectActions.unselectAll();
+    }
+  }, {
+    key: "selectCatalogItem",
+    value: function selectCatalogItem(element) {
+      if (element) {
+        switch (element.prototype) {
+          case "lines":
+            this.props.store.dispatch(linesActions.selectToolDrawingLine(element.name));
+            break;
+          case "items":
+            this.props.store.dispatch(itemsActions.selectToolDrawingItem(element.name));
+            break;
+          case "holes":
+            this.props.store.dispatch(holesActions.selectToolDrawingHole(element.name));
+            break;
+        }
+      }
     }
   }, {
     key: "render",

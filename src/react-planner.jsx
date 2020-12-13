@@ -17,6 +17,7 @@ import { VERSION } from "./version";
 import "./styles/export";
 import ReactPlannerService from "./ReactPlannerService";
 import { loadProject } from "./actions/project-actions";
+import CatalogList from "./components/catalog-view/catalog-list";
 
 const { Toolbar } = ToolbarComponents;
 const { Sidebar } = SidebarComponents;
@@ -30,6 +31,8 @@ const wrapperStyle = {
   display: "flex",
   flexFlow: "row nowrap",
 };
+
+import { itemsActions, linesActions, holesActions } from "./actions/export";
 
 class ReactPlanner extends Component {
   getChildContext() {
@@ -69,8 +72,35 @@ class ReactPlanner extends Component {
 
   openCatalog() {
     this.props.projectActions.openCatalog();
-    // console.log("aa");
+    // this.props.store.dispatch(selectToolDrawingItem("bench"));
   }
+
+  unSelectAll() {
+    this.props.projectActions.unselectAll();
+  }
+
+  selectCatalogItem(element) {
+    if (element) {
+      switch (element.prototype) {
+        case "lines":
+          this.props.store.dispatch(
+            linesActions.selectToolDrawingLine(element.name)
+          );
+          break;
+        case "items":
+          this.props.store.dispatch(
+            itemsActions.selectToolDrawingItem(element.name)
+          );
+          break;
+        case "holes":
+          this.props.store.dispatch(
+            holesActions.selectToolDrawingHole(element.name)
+          );
+          break;
+      }
+    }
+  }
+
   render() {
     let { width, height, state, stateExtractor, ...props } = this.props;
 
@@ -88,6 +118,12 @@ class ReactPlanner extends Component {
           height={toolbarH}
           state={extractedState}
           {...props}
+        /> */}
+        {/* <CatalogList
+          state={state}
+          width={300}
+          height={height}
+          state={extractedState}
         /> */}
         <Content
           width={width}
