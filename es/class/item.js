@@ -43,9 +43,9 @@ var Item = function () {
       state = Layer.selectElement(state, layerID, "items", itemID).updatedState;
 
       // Autonomous;
-      // if (!isCreatedSelect) {
-      ReactPlannerService.getInstance().onAction(Action.SELECT, ItemTypes.ITEM, itemID);
-      // }
+      if (!isCreatedSelect) {
+        ReactPlannerService.getInstance().onAction(Action.SELECT, ItemTypes.ITEM, itemID);
+      }
 
       return { updatedState: state };
     }

@@ -71,7 +71,12 @@ class ReactPlanner extends Component {
   }
 
   openCatalog() {
-    this.props.projectActions.openCatalog();
+    // this.props.projectActions.openCatalog();
+
+    this.props.projectActions.setProjectProperties({
+      width: 10000,
+      height: 10000,
+    });
     // this.props.store.dispatch(selectToolDrawingItem("bench"));
   }
 
